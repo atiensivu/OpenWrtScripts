@@ -191,6 +191,13 @@ MAXSESSIONS="5"
 TESTPROTO="-4"
 IDLETEST=false
 
+if ! command -v netperf &> /dev/null
+then
+    echo "'netperf' could not be found"
+    echo "'okpg install netperf' is recommended"
+    exit
+fi
+
 # read the options
 
 # extract options and their arguments into variables.

@@ -76,6 +76,13 @@ PINGHOST="gstatic.com"
 MAXSESSIONS=4
 TESTPROTO=-4
 
+if ! command -v netperf &> /dev/null
+then
+    echo "'netperf' could not be found"
+    echo "'okpg install netperf' is recommended"
+    exit
+fi
+
 # Create temp files for netperf up/download results
 ULFILE=`mktemp /tmp/netperfUL.XXXXXX` || exit 1
 DLFILE=`mktemp /tmp/netperfDL.XXXXXX` || exit 1
